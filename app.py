@@ -191,8 +191,12 @@ I invite you to explore, reflect, and rethink evidence in cross-border settings.
             [Download Supplementary Paper (PDF)](https://your-link-here.com)
             """)
     st.markdown("---")
-    st.markdown("""
-<footer>This report is a product of the FCDO's Cross-Border Conflict: Evidence, Policy and Trends (XCEPT) programme, funded by UK aid from the UK government. XCEPT brings together leading experts to examine conflict-affected borderlands, how conflicts connect across borders, and the factors that shape violent and peaceful behaviour. This research is a part of XCEPT's Local Research Network, which engages experts on the ground to build data, evidence and analysis that reflects the local experiences of fragility and conflict. For more information on XCEPT and the Local Research Network visit www.xcept-research.org. The views expressed in the document do not necessarily reflect those of XCEPT or the UK government.</footer>", unsafe_allow_html=True)
+    st.markdown("---")
+    st.markdown(
+        """
+<footer>This report is a product of the FCDO's Cross-Border Conflict: Evidence, Policy and Trends (XCEPT) programme, funded by UK aid from the UK government. XCEPT brings together leading experts to examine conflict-affected borderlands, how conflicts connect across borders, and the factors that shape violent and peaceful behaviour. This research is a part of XCEPT's Local Research Network, which engages experts on the ground to build data, evidence and analysis that reflects the local experiences of fragility and conflict. For more information on XCEPT and the Local Research Network visit www.xcept-research.org. The views expressed in the document do not necessarily reflect those of XCEPT or the UK government.</footer>""",
+        unsafe_allow_html=True
+    )
 
 # 2. Conceptual Background
 elif page == "📚 Conceptual Background":

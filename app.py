@@ -157,7 +157,7 @@ elif page == "📚 Conceptual Background":
 
     with row1_col2:
         try:
-            st.image("Computational-Framework-for-Borderland-Analysis/pictures/framework_diagram.png", use_container_width=True)
+            st.image("pictures/framework_diagram.png", use_container_width=True)
             st.caption("**Figure:** Conceptual Framework Linking Spatial, Temporal, and Relational Layers.")
         except Exception:
             st.warning("Framework diagram not found. Please ensure 'framework_diagram.png' exists in your project folder.")
@@ -249,7 +249,7 @@ elif page == "🛠️ Computational Framework":
 
     with row1_col2:
         try:
-            st.image("Computational-Framework-for-Borderland-Analysis/pictures/framework_diagram.png", use_container_width=True)
+            st.image("pictures/framework_diagram.png", use_container_width=True)
             st.caption("**Framework:** Translating Spatial, Temporal, and Relational Dimensions into Computable Indices")
         except Exception:
             st.warning("Framework diagram not found. Please ensure 'framework_diagram.png' exists in your project folder.")
@@ -425,10 +425,10 @@ elif page == "🗺️ Interactive Exploration":
     """)
 
     # --- Load Data ---
-    mpi_border = pd.read_csv('Computational-Framework-for-Borderland-Analysis/data/mpi_border_results.csv')
-    ci_results = pd.read_csv('Computational-Framework-for-Borderland-Analysis/data/ci_results.csv')
-    if os.path.exists('Computational-Framework-for-Borderland-Analysis/data/mpi_summary.csv'):
-        mpi_summary = pd.read_csv('Computational-Framework-for-Borderland-Analysis/data/mpi_summary.csv')
+    mpi_border = pd.read_csv('data/mpi_border_results.csv')
+    ci_results = pd.read_csv('data/ci_results.csv')
+    if os.path.exists('data/mpi_summary.csv'):
+        mpi_summary = pd.read_csv('data/mpi_summary.csv')
     else:
         mpi_summary = None
 

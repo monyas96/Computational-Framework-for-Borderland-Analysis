@@ -56,7 +56,7 @@ page = st.sidebar.radio(
         "📈 Data and Methodology",
         "🗺️ Interactive Exploration",
         "🧩 Key Insights and Findings",
-        "🖼️ StoryMap",
+        "🖼️ GIS and Spatial Modeling",
         "🏛️ Policy Reflections",
         "📚 Resources and Downloads"
     ]
@@ -69,30 +69,105 @@ if page == "🏠 Project Overview":
     st.title("🏠 Borderland Dynamics Knowledge Hub")
     st.markdown("---")
     st.header("Project Overview")
-    
     st.markdown("""
     This knowledge hub emerges from my work as a Fellow with the **Women Researchers Fellowship**, part of the **X-Border Local Research Network** — an initiative that supports early-career female researchers working on conflict-affected border regions across Asia, the Middle East, and the Horn of Africa.
     
     During my fellowship, I set out to develop a computational framework that could better capture the economic, security, and social dynamics shaping borderland regions. Using the Kenya–Uganda border as a case study, I combined spatial modeling with relational analysis to map trade potential, conflict risk, and informal social networks.
     
     The goal was not simply to produce new indices or maps, but to make complex realities **legible**, **interpretable**, and **actionable** for policy audiences.  
-    This project reflects a growing recognition: **technical rigor alone is not enough**. For computational research to shape real-world decisions, it must be framed around institutional questions, embedded within policy processes, and open to reflexive interpretation.
-    
-    This Streamlit app provides a unified platform where users can explore the model interactively, read the technical and reflexive findings, and engage with the broader methodological conversation.  
-    It integrates two core research outputs:
-    - **Computational Framework for Borderland Analysis** (technical modeling and data)
-    - **Borderlands, Evidence, and Methodological Pluralism** (reflexive supplement)
-    
-    Through this hub, I invite users to explore how **computational methods** and **critical reflection** can together build stronger bridges between evidence and policy in complex environments.
-    """)
-    
+    This project reflects a growing recognition: **technical alone is not enough**. For computational research to shape real-world decisions, it must be framed around institutional questions, embedded within policy processes, and open to reflexive interpretation.
+     """)
+    st.markdown("""
+    This Streamlit app provides a **unified platform** where users can explore the computational model interactively, read through the technical and reflexive findings, and engage with the broader **methodological conversation** around borderland research.
+
+The hub integrates **two core research outputs**:
+- **Computational Framework for Borderland Analysis**  
+  ➔ Technical modeling of trade potential, conflict risk, and relational networks.
+- **Borderlands, Evidence, and Methodological Pluralism**  
+  ➔ Reflexive supplement on how evidence is shaped, methodological choices, and institutional contexts.
+
+
+
+## 🛠️ How the Project Was Built
+
+""")
+    with st.expander("🔎 Click here to expand the full technical and conceptual process"):
+        st.markdown("""
+The project unfolded in three interlinked layers:
+
+### 1. Theoretical Framing
+- Grounded in **borderland studies**, **relational geography**, and **fragility research**.
+- Recognized that **trust networks, identity ties, and informal economies** heavily shape cross-border trade.
+- Emphasized the **need for pluralistic evidence**—combining hard quantitative data with relational and cultural insight.
+
+(See 📚 *Conceptual Background* for detailed framing.)
+
+---
+
+### 2. Technical Spatial Analysis
+
+**Data Collection and Merging**  
+- Sources: WorldPop (population), ACLED (conflict), OpenStreetMap/Overpass Turbo (markets and roads), ESRI Africa Transport Routes.
+- Merged Kenya and Uganda datasets to create a unified spatial canvas.
+
+**Assigning Population to Markets**  
+- Created **buffers** around markets (1.5 km for urban, 3 km for rural).
+- Used **spatial joins** to estimate the population covered by each market.
+
+**Conflict Exposure Index (CI)**  
+- Modeled conflict risk as a function of **proximity** and **fatalities** near border posts.
+- Developed a weighted index where fatalities closer to a border post mattered more.
+
+**Market Potential Index (MPI)**  
+- Modeled trade potential by combining **population reach**, **road accessibility**, and **market distance**.
+- Used **travel time calculations** based on real road network data (max speed per road type).
+
+**Mapping Relational Ties**  
+- Overlaid **ethnic and linguistic group data** to model trust-based trading patterns across the border.
+- Highlighted how informal networks sometimes mattered more than formal infrastructure.
+
+---
+
+### 3. Reflection and Institutional Relevance
+
+**Key Lessons:**
+- Data and models **alone do not answer policy questions** — co-defining goals with policymakers is essential.
+- **Relational factors** (ethnicity, trust, informal ties) are crucial but often ignored in technical models.
+- Computational methods should be **reflexive**: transparent about assumptions and limitations.
+
+(See 🏛️ *Policy Reflections* for a deeper discussion.)
+
+---
+
+""")
+    st.markdown("""
+---
+
+## 🧭 How to Navigate This Hub
+
+| Section | Purpose |
+|:--------|:--------|
+| 🏠 **Project Overview** | Big-picture framing: what, why, and how. |
+| 📚 **Conceptual Background** | Theories and frameworks that shaped the project. |
+| 🛠️ **Computational Framework** | Deep dive into modeling choices and assumptions. |
+| 📈 **Data and Methodology** | How the data was collected, processed, and modeled. |
+| 🌍 **Interactive Exploration** | Explore conflict risks, market potentials, and travel networks interactively. |
+| 🧩 **Key Insights and Findings** | Summarized key results and patterns. |
+| 🗺️ **GIS and Spatial Modeling** | Detailed walkthrough of the GIS analysis with diagrams and visual examples. |
+| 🏛️ **Policy Reflections** | Insights for making models actionable and usable for decision-making. |
+| 📚 **Resources and Downloads** | Access supplementary material and additional references. |
+
+---
+
+
+I invite you to explore, reflect, and rethink evidence in cross-border settings.
+
+""")
     st.markdown("---")
 
     # --- Source Papers Section ---
     st.subheader("Source Papers")
-
     col1, col2 = st.columns(2)
-
     with col1:
         with st.expander("📄 Technical Paper: Computational Framework for Borderland Analysis", expanded=False):
             st.markdown("""
@@ -104,7 +179,6 @@ if page == "🏠 Project Overview":
             
             [Download Technical Paper (PDF)](https://your-link-here.com)
             """)
-
     with col2:
         with st.expander("📄 Supplementary Paper: Borderlands, Evidence, and Methodological Pluralism", expanded=False):
             st.markdown("""
@@ -116,28 +190,22 @@ if page == "🏠 Project Overview":
             
             [Download Supplementary Paper (PDF)](https://your-link-here.com)
             """)
-
     st.markdown("---")
-
     st.markdown("<footer>Part of the Women Researchers Fellowship, X-Border Local Research Network.</footer>", unsafe_allow_html=True)
 
 # 2. Conceptual Background
 elif page == "📚 Conceptual Background":
     # Page Title
     st.title("🧠 Conceptual Background")
-
     # Summary Box
     st.info("""
     **Summary:**  
     This project introduces a computational framework for analyzing borderland dynamics, integrating spatial, temporal, and relational perspectives.  
     It builds on spatial interaction theory, conflict studies, and relational geography to quantify market potential, conflict exposure, and social ties in dynamic border zones.
     """)
-
     st.markdown("---")
-
     # === Row 1: Introduction + Framework Image ===
     row1_col1, row1_col2 = st.columns([2, 1])
-
     with row1_col1:
         st.markdown("""
     Traditional border studies have largely relied on qualitative assessments and isolated case studies, providing valuable but fragmented insights into how borders operate as zones of economic exchange, conflict, and social interaction.  
@@ -154,7 +222,6 @@ elif page == "📚 Conceptual Background":
 
     The Kenya–Uganda border serves as a validation case, with approximately 23,000 crossings daily along a volatile, opportunity-rich frontier.
         """, unsafe_allow_html=True)
-
     with row1_col2:
         try:
             st.image("pictures/framework_diagram.png", use_container_width=True)
@@ -162,12 +229,9 @@ elif page == "📚 Conceptual Background":
         except Exception:
             st.warning("Framework diagram not found. Please ensure 'framework_diagram.png' exists in your project folder.")
             st.markdown("**Figure:** Conceptual Framework Linking Spatial, Temporal, and Relational Layers.\n*Image not found*")
-
     st.markdown("---")
-
     # === Row 2: 3 Columns for Levels inside Expanders ===
     row2_col1, row2_col2, row2_col3 = st.columns(3)
-
     with row2_col1:
         with st.expander("🌍 Spatial Level: Infrastructure and Economic Geography", expanded=False):
             st.markdown("""
@@ -181,7 +245,6 @@ elif page == "📚 Conceptual Background":
 
     While these spatial components are crucial, they alone cannot capture the disruptions caused by political instability and conflict, which leads to integrating a temporal dimension.
             """, unsafe_allow_html=True)
-
     with row2_col2:
         with st.expander("⏳ Temporal Level: Conflict Dynamics and Evolution", expanded=False):
             st.markdown("""
@@ -195,7 +258,6 @@ elif page == "📚 Conceptual Background":
 
     This temporal analysis complements spatial measures, highlighting how persistent insecurity reshapes borderland economies over time.
             """, unsafe_allow_html=True)
-
     with row2_col3:
         with st.expander("🤝 Relational Level: Social Networks and Cultural Connections", expanded=False):
             st.markdown("""
@@ -209,13 +271,11 @@ elif page == "📚 Conceptual Background":
 
     This relational layer shows how trust networks can either reinforce or bypass formal spatial and political structures.
             """, unsafe_allow_html=True)
-
     st.markdown("---")
 
 # 3. Computational Framework
 elif page == "🛠️ Computational Framework":
     st.title("🧮 Step 2: Computational Model")
-
     # --- Summary Box ---
     st.info("""
     **Summary:**  
@@ -224,19 +284,16 @@ elif page == "🛠️ Computational Framework":
     - **Temporal Layer (CI):** Conflict exposure affecting trade disruption across time and space.
     - **Relational Layer:** Ethnic and linguistic networks mediating borderland resilience and trade patterns.
     """)
-
     st.markdown("---")
-
     # --- Row 1: Introduction + Optional Diagram ---
     row1_col1, row1_col2 = st.columns([2, 1])
-
     with row1_col1:
         st.markdown("""
     Building on the theoretical foundations outlined earlier, this section constructs the computational framework into three quantifiable components: the Market Potential Index (MPI), the Conflict Exposure Index (CI), and relational analysis.  
     Together, these components provide a structured framework for analyzing borderland dynamics systematically and scalably.
 
     - **Layer 1: Spatial Level**  
-    The MPI quantifies how geographic factors such as distance, infrastructure, and population influence trade accessibility. High-resolution datasets from WorldPop and OpenStreetMap form the backbone, incorporating conditional buffering to distinguish urban and rural markets. An exponential distance-decay function, paired with sensitivity analysis across multiple decay parameters, models how economic flows diminish over distance.
+    The MPI quantifies how geographic factors such as distance, infrastructure, and population size influence trade accessibility. High-resolution datasets from WorldPop and OpenStreetMap form the backbone, incorporating conditional buffering to distinguish urban and rural markets. An exponential distance-decay function, paired with sensitivity analysis across multiple decay parameters, models how economic flows diminish over distance.
 
     - **Layer 2: Temporal Level**  
     The CI captures how conflict events disrupt economic activities by weighting incidents by severity and proximity to trade corridors. This dynamic index allows for analyzing conflict's cumulative and evolving effects over time, revealing how insecurity embeds itself into borderland economies.
@@ -246,7 +303,6 @@ elif page == "🛠️ Computational Framework":
 
     This three-layered design seeks to reveal the complex interplay of markets, security, and social trust that characterizes dynamic borderlands like Kenya–Uganda.
     """, unsafe_allow_html=True)
-
     with row1_col2:
         try:
             st.image("pictures/framework_diagram.png", use_container_width=True)
@@ -254,12 +310,9 @@ elif page == "🛠️ Computational Framework":
         except Exception:
             st.warning("Framework diagram not found. Please ensure 'framework_diagram.png' exists in your project folder.")
             st.markdown("**Framework:** Translating Spatial, Temporal, and Relational Dimensions into Computable Indices\n*Image not found*")
-
     st.markdown("---")
-
     # --- Row 2: Three Expanders in Columns ---
     row2_col1, row2_col2, row2_col3 = st.columns(3)
-
     # Layer 1: Spatial (MPI)
     with row2_col1:
         with st.expander("🌐 Layer 1: Spatial Level (Market Potential Index - MPI)", expanded=False):
@@ -281,7 +334,6 @@ elif page == "🛠️ Computational Framework":
     **Purpose:**
     To map areas where infrastructure investment would generate the highest market activity under different distance sensitivities.
             """, unsafe_allow_html=True)
-
     # Layer 2: Temporal (CI)
     with row2_col2:
         with st.expander("⏳ Layer 2: Temporal Level (Conflict Exposure Index - CI)", expanded=False):
@@ -300,7 +352,6 @@ elif page == "🛠️ Computational Framework":
     **Purpose:**
     Quantify how insecurity accumulates and disrupts economic flows across space and time.
             """, unsafe_allow_html=True)
-
     # Layer 3: Relational (Social Networks)
     with row2_col3:
         with st.expander("🤝 Layer 3: Relational Level (Ethnic and Linguistic Networks)", expanded=False):
@@ -317,18 +368,15 @@ elif page == "🛠️ Computational Framework":
     **Purpose:**
     Reveal how shared identities mediate both economic opportunity and vulnerability, offering critical policy insights invisible to spatial or conflict-only models.
             """, unsafe_allow_html=True)
-
     st.markdown("---")
 
 # 4. Data and Methodology
 elif page == "📈 Data and Methodology":
     st.title("📈 Data and Methodology")
     st.header("🗂️ Data Sources")
-    
     st.markdown("""
     This section provides technical transparency about the data and methods used in our analysis.
     """)
-    
     with st.expander("Data Sources", expanded=False):
         st.markdown("""
         **Primary Data Sources:**
@@ -340,9 +388,7 @@ elif page == "📈 Data and Methodology":
         
         These datasets provide the foundation for our computational framework.
         """)
-    
     st.header("🧮 Methodology Overview")
-    
     with st.expander("GIS Processing Steps", expanded=False):
         st.markdown("""
         **Key Processing Steps:**
@@ -363,7 +409,6 @@ elif page == "📈 Data and Methodology":
            - Ethnolinguistic regions identified
            - Cross-border connections mapped
         """)
-    
     with st.expander("Parameters and Sensitivity", expanded=False):
         st.markdown("""
         **Default Parameters:**
@@ -374,9 +419,7 @@ elif page == "📈 Data and Methodology":
         
         These parameters were chosen based on sensitivity analysis and can be adjusted in the interactive visualization.
         """)
-    
     st.header("🔁 Reproducibility")
-    
     with st.expander("Code and Reproducibility", expanded=False):
         st.markdown("""
         **GitHub Repository:**
@@ -392,7 +435,6 @@ elif page == "📈 Data and Methodology":
         
         This ensures full reproducibility of our analysis.
         """)
-    
     with st.expander("Assumptions and Limitations", expanded=False):
         st.markdown("""
         **Key Assumptions:**
@@ -418,12 +460,10 @@ elif page == "🗺️ Interactive Exploration":
     import matplotlib.pyplot as plt
     import streamlit as st
     import os
-
     st.title("🌍 Interactive Borderland Analysis")
     st.markdown("""
     Explore the intersection of **Market Potential** and **Conflict Exposure** across the Kenya–Uganda border. This tool allows dynamic exploration of spatial, temporal, and relational trends shaping border dynamics.
     """)
-
     # --- Load Data ---
     mpi_border = pd.read_csv('data/mpi_border_results.csv')
     ci_results = pd.read_csv('data/ci_results.csv')
@@ -431,16 +471,13 @@ elif page == "🗺️ Interactive Exploration":
         mpi_summary = pd.read_csv('data/mpi_summary.csv')
     else:
         mpi_summary = None
-
     decay_options = [0.02, 0.03, 0.05]
     border_options = mpi_border['Border_Name'].dropna().unique()
     year_options = ci_results['year'].dropna().unique() if 'year' in ci_results.columns else []
     ethnic_options = mpi_summary['name'].unique() if mpi_summary is not None and 'name' in mpi_summary.columns else []
-
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
         'MPI Bar Chart', 'MPI Heatmap', 'CI Temporal Trends', 'CI Heatmap', 'Download Data'
     ])
-
     # --- Tab 1: MPI Bar Chart ---
     with tab1:
         st.subheader('Market Potential Index (MPI) by Border Post')
@@ -460,7 +497,6 @@ elif page == "🗺️ Interactive Exploration":
             st.altair_chart(chart, use_container_width=True)
         else:
             st.info('No data for selected borders.')
-
     # --- Tab 2: MPI Heatmap ---
     with tab2:
         st.subheader('MPI Heatmap by Border Post')
@@ -471,7 +507,6 @@ elif page == "🗺️ Interactive Exploration":
         sns.heatmap(data, annot=True, fmt='.2f', cmap='YlGnBu', cbar_kws={'label': f'MPI (Decay {decay})'}, vmin=0, vmax=1, ax=ax)
         ax.set_title(f'MPI Heatmap (Decay {decay})')
         st.pyplot(fig)
-
     # --- Tab 3: CI Temporal Trends ---
     with tab3:
         st.subheader('Temporal Trends in Conflict Exposure Index (CI)')
@@ -487,7 +522,6 @@ elif page == "🗺️ Interactive Exploration":
             st.altair_chart(chart, use_container_width=True)
         else:
             st.info('No CI data for selected borders.')
-
     # --- Tab 4: CI Heatmap ---
     with tab4:
         st.subheader('CI Heatmap by Border and Year')
@@ -496,7 +530,6 @@ elif page == "🗺️ Interactive Exploration":
         sns.heatmap(ci_pivot, annot=True, fmt='.2f', cmap='YlGnBu', cbar_kws={'label': 'CI Value'}, ax=ax)
         ax.set_title('Conflict Exposure Index (CI) by Border and Year')
         st.pyplot(fig)
-
     # --- Tab 5: Download Data ---
     with tab5:
         st.subheader('📥 Download Data')
@@ -532,7 +565,6 @@ elif page == "🗺️ Interactive Exploration":
 # 6. Key Insights and Findings
 elif page == "🧩 Key Insights and Findings":
     st.title("📖 Applying the Computational Framework: Insights from the Kenya–Uganda Border")
-
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "Background",
         "Spatial Analysis (MPI)",
@@ -540,7 +572,6 @@ elif page == "🧩 Key Insights and Findings":
         "Relational Analysis",
         "Conclusion"
     ])
-
     with tab1:
         st.header("🧭 Background")
         st.markdown("""
@@ -551,7 +582,6 @@ elif page == "🧩 Key Insights and Findings":
 
         This diversity—from volatile pastoralist zones to booming trade corridors—demonstrates why understanding borderland dynamics requires an integrated approach spanning spatial, temporal, and relational dimensions.
         """)
-
     with tab2:
         st.header("🗺️ 3.1 Spatial Analysis and the Market Potential Index (MPI)")
         st.markdown("""
@@ -567,7 +597,6 @@ elif page == "🧩 Key Insights and Findings":
         Importantly, sensitivity to decay parameters emphasizes a policy-relevant point: **distance elasticity matters**.  
         Planners must account for how steeply economic opportunities fall off with distance when designing transport corridors and trade hubs.
         """)
-
     with tab3:
         st.header("🔥 3.2 Temporal Analysis and the Conflict Exposure Index (CI)")
         st.markdown("""
@@ -583,7 +612,6 @@ elif page == "🧩 Key Insights and Findings":
         High-value economic corridors are particularly vulnerable to security shocks, necessitating dynamic monitoring systems.  
         Meanwhile, geographic isolation protects some regions at the cost of deeper marginalization.
         """)
-
     with tab4:
         st.header("🤝 3.3 Relational Layer: Social Networks and Cultural Connectivity")
         st.markdown("""
@@ -599,7 +627,6 @@ elif page == "🧩 Key Insights and Findings":
         Economic resilience and vulnerability cannot be explained solely by physical connectivity or conflict trends;  
         they are deeply shaped by the human geographies of trust, kinship, and shared culture.
         """)
-
     with tab5:
         st.header("✨ Conclusion")
         st.markdown("""
@@ -612,39 +639,52 @@ elif page == "🧩 Key Insights and Findings":
         Borderland development must therefore move beyond physical investment alone: it must recognize the **interlocking roles of geography, conflict patterns, and human relations** in shaping regional futures.
         """)
 
-# 7. StoryMap
-elif page == "🖼️ StoryMap":
-    st.title("🖼️ StoryMap")
-    st.header("🗺️ Interactive Story Map")
-    
+# 7. GIS and Spatial Modeling
+elif page == "🖼️ GIS and Spatial Modeling":
+    # Title and Introduction
+    st.title("🛰️ GIS Analysis Workflow")
     st.markdown("""
-    Explore the interactive story map visualization of borderland dynamics:
+    Welcome to the **step-by-step walkthrough** of how the GIS analysis behind the Kenya–Uganda border study was constructed. 
+    This guide explains how datasets were processed, merged, and transformed into actionable spatial insights.
+    Use the **Next** and **Back** buttons to explore each step.
     """)
-    
-    # Replace with real ESRI StoryMap link
-    storymap_url = "https://storymaps.arcgis.com/"  
-    
-    try:
-        components.iframe(storymap_url, height=600)
-    except Exception as e:
-        st.warning("Unable to load StoryMap. Please check your internet connection.")
-        st.markdown("""
-        ### ESRI StoryMap
-        *StoryMap placeholder - Please check your internet connection*
-        
-        The StoryMap provides a guided, visual narrative of our findings, combining maps and text to explain the Kenya–Uganda borderland story.
-        """)
-    
-    st.markdown("""
-    The StoryMap offers a narrative approach to exploring our findings, with:
-    
-    - Guided tours of key border points
-    - Visual explanations of the MPI and CI indices
-    - Stories of how social networks shape trade
-    - Policy implications and recommendations
-    
-    This format is ideal for users who prefer a more guided, story-based exploration of the data.
-    """)
+    # Organized slides with correct pictures and text
+    slides = [
+        ("pictures/Merge_datasets.png", "Merging Datasets", "We merged datasets of Uganda and Kenya to create a unified foundation for analyzing cross-border trade, conflict, and population patterns."),
+        ("pictures/markets with population density weight 1.png", "Population Assignment: Markets and Population", "We sourced high-resolution population data from WorldPop and assigned it to each market point."),
+        ("pictures/markets with population density weight 2.png", "Market Coverage Simulation", "Urban markets received a 1.5 km buffer; rural markets a 3 km buffer, simulating service areas realistically."),
+        ("pictures/Trading routes and Markets population coverage 1.png", "Trading Routes and Population Coverage (Part 1)", "Visualization showing how catchment areas relate to key trading routes."),
+        ("pictures/Trading routes and Markets population coverage 2.png", "Trading Routes and Population Coverage (Part 2)", "Highlights how clustered populations align with transport corridors."),
+        ("pictures/Travel Distance Calculation 1.png", "Travel Distance Calculation (Part 1)", "Using OSM data, we calculated travel distances from markets to border posts."),
+        ("pictures/Travel Distance Calculation 2.png", "Travel Distance Calculation (Part 2)", "This map visualizes how accessibility varies across the region."),
+        ("pictures/Road Data Preparation.png", "Road Data Preparation", "Road infrastructure was cleaned and validated to model realistic travel times."),
+        ("pictures/assign pop point to market 1.png", "Assigning Population Points to Markets (Part 1)", "Spatial joins linked buffered markets to surrounding population points."),
+        ("pictures/assign pop point to market 2.png", "Assigning Population Points to Markets (Part 2)", "This simulates realistic market demand by weighting markets by nearby population."),
+        ("pictures/fatalities and proximity1.png", "Conflict Event Proximity (Part 1)", "Conflict event data was analyzed for proximity to critical trade routes."),
+        ("pictures/fatalities and proximity2.png", "Conflict Event Proximity (Part 2)", "We weighted fatalities and conflict severity closer to borders more heavily."),
+        ("pictures/Travle distance (1).jpg", "Conflict Impact on Trade Routes", "Trade routes were assessed for risk exposure to nearby conflicts."),
+        ("pictures/Markets type and conflict (1).jpg", "Market Types and Conflict Exposure", "We examined how different market types faced different conflict risks."),
+        ("pictures/CI (1).jpg", "Conflict Intensity Mapping", "Conflict Intensity (CI) heatmaps and timelines highlight spikes in conflict at hubs like Busia and Malaba."),
+        ("pictures/Layer 3 .jpg", "Relational Networks (Ethnicity and Trade)", "We overlaid ethnic, cultural, and linguistic ties onto economic and conflict maps.")
+    ]
+    # Initialize slide index
+    if "slide_index" not in st.session_state:
+        st.session_state.slide_index = 0
+    # Navigation Buttons
+    col1, col2, col3 = st.columns([1, 4, 1])
+    with col1:
+        if st.button("⬅️ Back"):
+            st.session_state.slide_index = max(st.session_state.slide_index - 1, 0)
+    with col3:
+        if st.button("Next ➡️"):
+            st.session_state.slide_index = min(st.session_state.slide_index + 1, len(slides) - 1)
+    # Display Current Slide
+    image_path, title, description = slides[st.session_state.slide_index]
+    st.subheader(f"**{title}**")
+    st.image(image_path, use_container_width=True)
+    st.markdown(f"**{description}**")
+    # Optional Sidebar
+    st.sidebar.markdown("🗺️ Navigate through the GIS Analysis Workflow step-by-step.")
 
 # 8. Policy Reflections
 elif page == "🏛️ Policy Reflections":
@@ -657,7 +697,6 @@ elif page == "🏛️ Policy Reflections":
         While computational methods provided powerful insights, the absence of co-defined policy questions limited immediate actionability.  
         This reflection highlights the importance of early co-construction with policy actors, the added value of computational approaches in decision-making, and future directions for collaborative, reflexive research.
         """)
-
     # --- 1. Study in Plain English ---
     st.header("1️⃣ What I Did: The Study in Plain English")
     with st.expander("Expand to read the study overview", expanded=False):
@@ -676,7 +715,6 @@ elif page == "🏛️ Policy Reflections":
         
         However, without a pre-agreed policy objective, translating these findings into actionable recommendations remained difficult.
         """)
-
     # --- 2. Why Co-Construction Matters ---
     st.header("2️⃣ Why Co-Construction Matters: Methodological Positioning")
     with st.expander("Expand to read about co-construction", expanded=False):
@@ -690,7 +728,6 @@ elif page == "🏛️ Policy Reflections":
         
         In this project, had we defined objectives jointly, outputs could have been timed and framed better to meet real institutional needs.
         """)
-
     # --- 3. The Value of Computational Approaches for Policy ---
     st.header("3️⃣ The Value of Computational Approaches for Policy")
     with st.expander("Expand to read about computational methods in policymaking", expanded=False):
@@ -708,7 +745,6 @@ elif page == "🏛️ Policy Reflections":
         - Reflexivity: Acknowledge biases and limits of models.
         - Embeddedness: Build stronger ties between researchers and policy institutions, e.g., via embedded researcher programs.
         """)
-
     # --- 4. Conclusion: Towards Collaborative Computational Policy Research ---
     st.header("4️⃣ Conclusion: Towards Collaborative Computational Policy Research")
     st.markdown("""
@@ -726,37 +762,29 @@ elif page == "🏛️ Policy Reflections":
 elif page == "📚 Resources and Downloads":
     st.title("📚 Resources and Downloads")
     st.header("📄 Research Reports")
-    
     st.markdown("""
     This section provides all downloadable materials related to our research.
     """)
-    
     col1, col2 = st.columns(2)
-    
     with col1:
         st.subheader("Research Reports")
-        
         st.markdown("""
         - [Download Technical Paper: Computational Framework for Borderland Analysis (PDF)](https://your-link-here.com)
         - [Download Supplementary Paper: Borderlands, Evidence, and Methodological Pluralism (PDF)](https://your-link-here.com)
         """)
     with col2:
         st.subheader("Code Repository")
-        
         st.markdown("""
         - [Computational Framework Repository](https://github.com/monyas96/Computational-Framework-for-Borderland-Analysis)
         - [Interactive Visualization Code](https://github.com/monyas96/Computational-Framework-for-Borderland-Analysis/tree/main/visualization)
         """)
-        
         st.subheader("References and Further Reading")
-        
         st.markdown("""
         - WorldPop: [https://www.worldpop.org/](https://www.worldpop.org/)
         - ACLED: [https://acleddata.com/](https://acleddata.com/)
         - OpenStreetMap: [https://www.openstreetmap.org/](https://www.openstreetmap.org/)
         - Ethnologue: [https://www.ethnologue.com/](https://www.ethnologue.com/)
         """)
-    
     st.markdown("---")
     st.markdown("""
     **License Information:**

@@ -1,7 +1,7 @@
 # Borderland Dynamics Knowledge Hub
 
 An interactive web application that integrates computational research, mapping tools, and policy reflections to examine borderland dynamics, focusing on the Kenya-Uganda border region.
-
+Acess the streamlit App here: https://monyas96-computational-framework-for-borderland-anal-app-od9dth.streamlit.app/
 ## Features
 
 - Interactive visualization of Market Potential Index (MPI) and Conflict Exposure Index (CI)

@@ -19,7 +19,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-st.logo("Computational-Framework-for-Borderland-Analysis/pictures/Xcept-Logo-808.png", size="large")
+st.logo("pictures/Xcept-Logo-808.png", size="large")
 
 # --- 2. Apply Custom Style ---
 set_custom_style()
